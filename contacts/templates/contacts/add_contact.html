@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="text-xl font-semibold mb-4 text-center">Add New Contact</h2>
+
+<form method="post" class="bg-gray-900 text-white p-6 rounded-lg shadow-lg space-y-4">
+  {% csrf_token %}
+  {% if error %}
+    <p class="text-red-400">{{ error }}</p>
+  {% endif %}
+
+  <input type="text" name="name" placeholder="Name" required class="w-full p-2 rounded bg-white text-black" />
+  <input type="email" name="email" placeholder="Email" required class="w-full p-2 rounded bg-white text-black" />
+  <input type="text" name="phone" placeholder="Phone" required class="w-full p-2 rounded bg-white text-black" />
+  <input type="date" name="dob" class="w-full p-2 rounded bg-white text-black" />
+
+  <select name="category" required class="w-full p-2 rounded bg-white text-black">
+    <option value="">-- Select Category --</option>
+    {% for category in categories %}
+      <option value="{{ category.id }}">{{ category.name }}</option>
+    {% endfor %}
+  </select>
+
+  <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded">
+    Save Contact
+  </button>
+</form>
+
+{% endblock %}
+

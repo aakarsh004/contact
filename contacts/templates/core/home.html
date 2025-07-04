@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="text-xl font-semibold">Welcome to the Contact Manager</h2>
+<a href="{% url 'contact:list_contacts' %}" class="text-blue-500 hover:underline">Go to Contacts</a>
+{% endblock %}

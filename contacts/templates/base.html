@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+  <script>
+    // Simple fade popup
+    function showPopup(message) {
+      const popup = document.createElement('div');
+      popup.className = 'fixed top-6 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-4 py-2 rounded shadow-lg transition-all duration-500';
+      popup.textContent = message;
+      document.body.appendChild(popup);
+      setTimeout(() => popup.remove(), 3000);
+    }
+  </script>
+</head>
+<body class="bg-blue text-white font-sans">
+
+  <div class="max-w-md mx-auto min-h-screen">
+
+    <!-- Header -->
+    <div class="text-center p-6">
+      <h1 class="text-2xl font-bold text-white">Contact Manager</h1>
+      <a href="{% url 'contact:add_contact' %}" class="mt-2 inline-block text-blue-400 text-sm">+ Add Contact</a>
+    </div>
+
+    <div class="px-4 pb-10">
+      {% block content %}{% endblock %}
+    </div>
+
+  </div>
+
+</body>
+</html>
